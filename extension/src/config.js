@@ -6,6 +6,7 @@
  */
 
 export const CONFIG = {
+  /** Local index server. Use `localhost` or `127.0.0.1` — both work if manifest host_permissions include both. */
   indexServerBase: 'http://localhost:8787',
 
   // TODO (hash verification):

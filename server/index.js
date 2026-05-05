@@ -218,7 +218,18 @@ app.post('/report', (req, res) => {
 
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`[aptrust] index server listening on http://localhost:${PORT}`);
   console.log(`[aptrust] records dir: ${RECORDS_DIR}`);
+});
+
+server.on('error', (err) => {
+  if (err && err.code === 'EADDRINUSE') {
+    console.error(
+      `[aptrust] Port ${PORT} is already in use. Close the other process or run with a different port, e.g. PORT=8788 npm start`
+    );
+  } else {
+    console.error('[aptrust] server failed to start:', err);
+  }
+  process.exit(1);
 });
