@@ -1,4 +1,4 @@
-# AP Trust \u2014 Local Verification POC (v2.0)
+# AP Trust — Local Verification POC (v2.0)
 
 Trust-boundary verification POC. An organization declares its official
 digital assets in a structured local manifest, and a Chrome extension verifies
@@ -23,21 +23,21 @@ The complete normative spec lives in
 
 ```
 aptrust2.0/
-\u251c\u2500\u2500 server/                 Local Express + TypeScript server, rule engine, admin UI host
-\u2502   \u251c\u2500\u2500 src/                Server source (TypeScript)
-\u2502   \u2514\u2500\u2500 public/admin/       Static admin UI files (vanilla JS)
-\u251c\u2500\u2500 extension/              Chrome MV3 extension (popup + content scripts for banners / badges)
-\u251c\u2500\u2500 data/
-\u2502   \u251c\u2500\u2500 records.json        Index of canonical trust boundaries
-\u2502   \u251c\u2500\u2500 manifests/          ONE JSON file per organization (mirrors APT 1.0)
-\u2502   \u2502   \u251c\u2500\u2500 jhu.edu.json
-\u2502   \u2502   \u251c\u2500\u2500 jh.edu.json
-\u2502   \u2502   \u251c\u2500\u2500 jhmi.edu.json
-\u2502   \u2502   \u251c\u2500\u2500 hopkinsmedicine.org.json
-\u2502   \u2502   \u2514\u2500\u2500 jhuu.com.json   (intentionally suspicious lookalike example)
-\u2502   \u2514\u2500\u2500 rules.json          Engine rule registry
-\u251c\u2500\u2500 docs/                   Architecture, demo script, production roadmap
-\u2514\u2500\u2500 README.md
+├── server/                 Local Express + TypeScript server, rule engine, admin UI host
+│   ├── src/                Server source (TypeScript)
+│   └── public/admin/       Static admin UI files (vanilla JS)
+├── extension/              Chrome MV3 extension (popup + content scripts for banners / badges)
+├── data/
+│   ├── records.json        Index of canonical trust boundaries
+│   ├── manifests/          ONE JSON file per organization (mirrors APT 1.0)
+│   │   ├── jhu.edu.json
+│   │   ├── jh.edu.json
+│   │   ├── jhmi.edu.json
+│   │   ├── hopkinsmedicine.org.json
+│   │   └── jhuu.com.json   (intentionally suspicious lookalike example)
+│   └── rules.json          Engine rule registry
+├── docs/                   Architecture, demo script, production roadmap
+└── README.md
 ```
 
 ## Requirements
@@ -71,7 +71,7 @@ npm test
 
 1. Open `chrome://extensions`.
 2. Enable Developer mode.
-3. **Load unpacked** \u2192 choose the `extension/` folder.
+3. **Load unpacked** → choose the `extension/` folder.
 
 The popup talks only to `http://localhost:3000`; if the local server is not
 running, the popup says so explicitly.
@@ -89,7 +89,7 @@ running, the popup says so explicitly.
 
 **APT 1.0-style browsing features (preserved on top of v2.0 `/verify`):**
 
-- Toolbar **badge**: **OK** (green) when the active tab is inside the selected boundary; **!** (red) when it is outside; **X** (purple) when the host is on the boundary's `excludedDomains` deny-list; **\u2709** on recognized webmail hosts (message links are still evaluated).
+- Toolbar **badge**: **OK** (green) when the active tab is inside the selected boundary; **!** (red) when it is outside; **X** (purple) when the host is on the boundary's `excludedDomains` deny-list; **✉** on recognized webmail hosts (message links are still evaluated).
 - **Red in-page banner** with **APTrust** branding, **Report to &lt;boundary&gt;**, and **Dismiss** when the page is outside the boundary (Protect Mode on).
 - **Untrusted link outlines**, **paste** warnings for untrusted URLs, and a banner when a **redirect** lands outside the boundary.
 - **POST `/report`** on the local server accepts mock impersonation reports from the extension (logged to the server console only). The report modal pulls the selected boundary's optional `reportContact` (team / email / URL / note) from `GET /manifest/:domain`.
@@ -124,7 +124,7 @@ The loader (`server/src/data.ts`) accepts either form (JSON-LD or plain v2 keys)
 
 **Subdomain matching.** Hosts are matched label-aware: when the selected boundary is `jhu.edu`, `news.jhu.edu` and `apply.it.jhu.edu` resolve as `OFFICIAL` without needing every subdomain enumerated in the manifest. The same expansion applies to declared `officialDomains`, `relatedOrganizations`, and `parentOrganization` hosts; `evil-jhu.edu` is correctly rejected because it is a sibling, not a subdomain. Subdomain expansion is intentionally suppressed for known multi-tenant social hosts (`x.com`, `instagram.com`, ...) so that only a `socialProfiles` match counts.
 
-**Third-party-hosted official assets (`additionalProfiles`).** Restored from APT 1.0. Each manifest can declare exact URLs for vendor-hosted official pages \u2014 e.g. JHU's student-employment portal at `johnshopkins.employment.ngwebsolutions.com`, the Qualtrics survey tenant `jhu.qualtrics.com`, or Hopkins Medicine's Epic MyChart instance. Matched as exact URLs (query/fragment ignored) and surfaced as `OFFICIAL` with relationship `ADDITIONAL_PROFILE_DECLARED`. Different hosts on the same vendor platform (`otheruniversity.qualtrics.com`) are correctly rejected.
+**Third-party-hosted official assets (`additionalProfiles`).** Restored from APT 1.0. Each manifest can declare exact URLs for vendor-hosted official pages — e.g. JHU's student-employment portal at `johnshopkins.employment.ngwebsolutions.com`, the Qualtrics survey tenant `jhu.qualtrics.com`, or Hopkins Medicine's Epic MyChart instance. Matched as exact URLs (query/fragment ignored) and surfaced as `OFFICIAL` with relationship `ADDITIONAL_PROFILE_DECLARED`. Different hosts on the same vendor platform (`otheruniversity.qualtrics.com`) are correctly rejected.
 
 **Sub-path social profiles.** A declared social profile URL like `https://www.instagram.com/johnshopkinsu` now also matches `/johnshopkinsu/tagged`, `/johnshopkinsu/reels/...`, etc., at a path-segment boundary. Prefix-but-not-segment hosts like `/johnshopkinsuhelp` are still rejected.
 
@@ -196,7 +196,7 @@ actual manifests at evaluation time:
 
 This means hand-authoring a new malicious manifest in
 `data/manifests/<your-impostor>.json` produces a fully descriptive
-verdict with no engine code change \u2014 the message follows the data.
+verdict with no engine code change — the message follows the data.
 
 ### Cross-manifest drift
 
@@ -215,8 +215,8 @@ back through `parentOrganization`, `relatedOrganizations`, or
 ### Trust root + acceptance policy
 
 Records may declare an optional `policy.trustRootCanonical` (e.g.
-`jhu.edu` for the JHU family). It is documentation only \u2014 the engine
-never blocks selection of a non-root boundary \u2014 but the field is
+`jhu.edu` for the JHU family). It is documentation only — the engine
+never blocks selection of a non-root boundary — but the field is
 surfaced via `GET /manifest/:domain` (in `_policy`) so the popup can show
 the relationship under the boundary card. The companion
 `policy.acceptWithinBoundary` field documents that subdomains owned by a
