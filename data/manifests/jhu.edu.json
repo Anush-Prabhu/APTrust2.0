@@ -1,0 +1,169 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aptrust": "https://aptrust.org/vocab#"
+  },
+  "@type": "Organization",
+  "@id": "https://jhu.edu/",
+
+  "name": "Johns Hopkins University",
+  "alternateName": [
+    "Johns Hopkins",
+    "JHU",
+    "The Johns Hopkins University"
+  ],
+  "description": "Private research university in Baltimore, Maryland, founded in 1876.",
+  "url": "https://www.jhu.edu/",
+  "logo": "https://brand.jhu.edu/assets/logos/Logo-Stack.png",
+  "foundingDate": "1876-01-22",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3400 N Charles St",
+    "addressLocality": "Baltimore",
+    "addressRegion": "MD",
+    "postalCode": "21218",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-410-516-8000",
+  "email": "webmaster@jhu.edu",
+  "sameAs": [
+    "https://en.wikipedia.org/wiki/Johns_Hopkins_University",
+    "https://ror.org/00za53h95",
+    "https://www.wikidata.org/wiki/Q193727"
+  ],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "jhu.edu" },
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "johnshopkins.edu" },
+    { "@type": "PropertyValue", "propertyID": "ROR", "value": "00za53h95" },
+    { "@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q193727" }
+  ],
+
+  "softwareVersion": "1.0.0",
+  "dateModified": "2026-05-07T00:00:00Z",
+
+  "aptrust:aptrustVersion": "1.0",
+  "aptrust:lastUpdated": "2026-05-07T00:00:00Z",
+  "aptrust:manifestLocation": "http://localhost:3000/manifest/jhu.edu",
+
+  "aptrust:trustBoundary": {
+    "primaryDomain": "jhu.edu",
+    "additionalDomains": [
+      "johnshopkins.edu",
+      "sais-jhu.edu",
+      "jhsph.edu"
+    ],
+    "match": "exact-or-subdomain"
+  },
+
+  "aptrust:trustRule": [
+    { "type": "domain", "match": "exact-or-subdomain" },
+    { "type": "socialProfile", "match": "exact-url-or-subpath" },
+    { "type": "additionalProfile", "match": "exact-url" },
+    { "type": "officialMail", "match": "host+realm" }
+  ],
+
+  "aptrust:sameAsDomain": [
+    "https://jhu.edu/",
+    "https://www.jhu.edu/",
+    "https://johnshopkins.edu/",
+    "https://www.johnshopkins.edu/",
+    "https://sais-jhu.edu/",
+    "https://www.sais-jhu.edu/",
+    "https://jhsph.edu/",
+    "https://www.jhsph.edu/"
+  ],
+
+  "aptrust:sameAsSocialProfile": [
+    "https://x.com/JohnsHopkins",
+    "https://www.facebook.com/johnshopkinsuniversity",
+    "https://www.linkedin.com/school/johns-hopkins-university/",
+    "https://www.youtube.com/johnshopkins",
+    "https://www.instagram.com/johnshopkinsu",
+    "https://www.tiktok.com/@johnshopkinsu"
+  ],
+
+  "aptrust:sameAsAdditionalProfile": [
+    {
+      "url": "https://johnshopkins.employment.ngwebsolutions.com/",
+      "provider": "NG Web Solutions",
+      "note": "Official student-employment portal (third-party hosted)."
+    },
+    {
+      "url": "https://jhu.bbcollab.com/",
+      "provider": "Blackboard Collaborate",
+      "note": "Official virtual-classroom tenant."
+    },
+    {
+      "url": "https://jhu.qualtrics.com/",
+      "provider": "Qualtrics",
+      "note": "Official survey tenant."
+    },
+    {
+      "url": "https://giving.jh.edu/",
+      "provider": "Johns Hopkins Office of Development",
+      "note": "Official giving / alumni donations site."
+    }
+  ],
+
+  "aptrust:relatedOrganization": [
+    {
+      "name": "Johns Hopkins (alternate brand)",
+      "canonicalDomain": "jh.edu",
+      "url": "https://www.jh.edu/",
+      "domains": ["https://jh.edu/", "https://www.jh.edu/"],
+      "relationshipType": "alternate-brand"
+    },
+    {
+      "name": "Johns Hopkins Medicine",
+      "canonicalDomain": "hopkinsmedicine.org",
+      "url": "https://www.hopkinsmedicine.org/",
+      "domains": [
+        "https://www.hopkinsmedicine.org/",
+        "https://www.jhmi.edu/"
+      ],
+      "relationshipType": "medical-system"
+    },
+    {
+      "name": "Johns Hopkins Medical Institutions",
+      "canonicalDomain": "jhmi.edu",
+      "url": "https://www.jhmi.edu/",
+      "domains": ["https://jhmi.edu/", "https://www.jhmi.edu/"],
+      "relationshipType": "medical-institutions"
+    }
+  ],
+
+  "aptrust:exclusion": [
+    {
+      "domain": "deprecated.jhu.edu",
+      "reason": "Decommissioned subdomain \u2014 no longer represents JHU."
+    },
+    {
+      "domain": "jhu-promo-giveaway.example",
+      "reason": "Phishing campaign mimicking JHU branding."
+    }
+  ],
+
+  "aptrust:officialMail": {
+    "provider": "Microsoft Outlook (shared tenant)",
+    "webUrl": "https://outlook.cloud.microsoft/mail/?realm=jh.edu",
+    "host": "outlook.cloud.microsoft",
+    "realmHint": "realm=jh.edu",
+    "note": "JHU webmail runs on Microsoft's shared Outlook tenant. The realm query string scopes the inbox to JHU."
+  },
+
+  "aptrust:reportContact": {
+    "team": "JHU Information Security Institute",
+    "email": "abuse@jhu.edu",
+    "url": "https://it.johnshopkins.edu/security/report/",
+    "note": "Mock contact for the POC \u2014 not a real intake endpoint."
+  },
+
+  "aptrust:verificationMethod": {
+    "hashAlgorithm": "SHA-256",
+    "hashVerificationEnabled": false,
+    "nameserverMetadata": {
+      "note": "Metadata only. NOT used as active trust logic in this POC.",
+      "nameservers": ["ns1.johnshopkins.edu", "ns2.johnshopkins.edu"]
+    }
+  }
+}

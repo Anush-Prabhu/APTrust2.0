@@ -1,0 +1,93 @@
+[
+  {
+    "canonicalDomain": "jhu.edu",
+    "displayName": "Johns Hopkins University",
+    "type": "CollegeOrUniversity",
+    "status": "active",
+    "manifestKey": "jhu.edu",
+    "aliases": [
+      "jhu",
+      "johnshopkins.edu",
+      "Johns Hopkins",
+      "Johns Hopkins University"
+    ],
+    "policy": {
+      "defaultDecision": "deny",
+      "allowNameserverExpansion": false,
+      "requireBidirectionalVerification": true,
+      "acceptWithinBoundary": "bidirectional"
+    }
+  },
+  {
+    "canonicalDomain": "jh.edu",
+    "displayName": "Johns Hopkins (alternate brand)",
+    "type": "CollegeOrUniversity",
+    "status": "active",
+    "manifestKey": "jh.edu",
+    "aliases": [
+      "jh",
+      "Johns Hopkins (jh.edu)"
+    ],
+    "policy": {
+      "defaultDecision": "deny",
+      "allowNameserverExpansion": false,
+      "requireBidirectionalVerification": true,
+      "trustRootCanonical": "jhu.edu",
+      "acceptWithinBoundary": "bidirectional"
+    }
+  },
+  {
+    "canonicalDomain": "jhmi.edu",
+    "displayName": "Johns Hopkins Medical Institutions",
+    "type": "MedicalOrganization",
+    "status": "active",
+    "manifestKey": "jhmi.edu",
+    "aliases": [
+      "jhmi",
+      "Hopkins Medical Institutions"
+    ],
+    "policy": {
+      "defaultDecision": "deny",
+      "allowNameserverExpansion": false,
+      "requireBidirectionalVerification": true,
+      "trustRootCanonical": "jhu.edu",
+      "acceptWithinBoundary": "bidirectional"
+    }
+  },
+  {
+    "canonicalDomain": "hopkinsmedicine.org",
+    "displayName": "Johns Hopkins Medicine",
+    "type": "MedicalOrganization",
+    "status": "active",
+    "manifestKey": "hopkinsmedicine.org",
+    "aliases": [
+      "Johns Hopkins Medicine",
+      "Hopkins Medicine"
+    ],
+    "policy": {
+      "defaultDecision": "deny",
+      "allowNameserverExpansion": false,
+      "requireBidirectionalVerification": true,
+      "trustRootCanonical": "jhu.edu",
+      "acceptWithinBoundary": "bidirectional"
+    }
+  },
+  {
+    "canonicalDomain": "jhuu.com",
+    "displayName": "Johns Hopkins University (suspicious lookalike)",
+    "type": "SuspiciousExample",
+    "status": "test",
+    "manifestKey": "jhuu.com",
+    "aliases": [
+      "fake jhu",
+      "suspicious jhu",
+      "jhuu"
+    ],
+    "policy": {
+      "defaultDecision": "deny",
+      "allowNameserverExpansion": false,
+      "requireBidirectionalVerification": true,
+      "acceptWithinBoundary": "bidirectional"
+    }
+  }
+]

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AP Trust \u2013 Local Admin</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <strong>AP Trust</strong>
+        <span class="tag">Local Admin</span>
+      </div>
+      <nav class="tabs">
+        <button data-tab="dashboard" class="active">Dashboard</button>
+        <button data-tab="organizations">Organizations</button>
+        <button data-tab="manifests">Manifests</button>
+        <button data-tab="rules">Rules</button>
+        <button data-tab="tester">Verification Tester</button>
+      </nav>
+      <div id="serverBadge" class="server-badge">checking\u2026</div>
+    </header>
+
+    <div class="poc-notice">
+      This admin interface is local-only for the POC. A production version
+      would require authentication, authorization, signed updates, change
+      approvals, and audit logs.
+    </div>
+
+    <main>
+      <section id="tab-dashboard" class="tab-pane active">
+        <h1>Dashboard</h1>
+        <div class="grid stats">
+          <div class="card stat"><div class="kicker">Server</div><div id="statServer" class="value">\u2014</div></div>
+          <div class="card stat"><div class="kicker">Records</div><div id="statRecords" class="value">\u2014</div></div>
+          <div class="card stat"><div class="kicker">Manifests</div><div id="statManifests" class="value">\u2014</div></div>
+          <div class="card stat"><div class="kicker">Rules</div><div id="statRules" class="value">\u2014</div></div>
+        </div>
+
+        <div class="banner warn">
+          <strong>Default policy is DENY.</strong> Unknown domains are not trusted.
+        </div>
+        <div class="banner warn">
+          <strong>Nameserver allowlist is disabled by default</strong> and can
+          only produce <code>RELATED_CANDIDATE</code>, not <code>OFFICIAL</code>.
+        </div>
+      </section>
+
+      <section id="tab-organizations" class="tab-pane">
+        <div class="section-head">
+          <h1>Organizations</h1>
+          <div class="actions">
+            <button id="addRecordBtn">Add organization</button>
+            <button id="saveRecordsBtn" class="primary">Save organizations</button>
+          </div>
+        </div>
+        <div id="recordsEditor" class="editor"></div>
+      </section>
+
+      <section id="tab-manifests" class="tab-pane">
+        <div class="section-head">
+          <h1>Manifests</h1>
+          <div class="actions">
+            <button id="addManifestBtn">Add manifest</button>
+            <button id="saveManifestsBtn" class="primary">Save manifests</button>
+          </div>
+        </div>
+        <div id="manifestsEditor" class="editor"></div>
+      </section>
+
+      <section id="tab-rules" class="tab-pane">
+        <div class="section-head">
+          <h1>Rules</h1>
+          <div class="actions">
+            <button id="saveRulesBtn" class="primary">Save rules</button>
+          </div>
+        </div>
+        <div id="rulesEditor" class="editor"></div>
+      </section>
+
+      <section id="tab-tester" class="tab-pane">
+        <h1>Verification Tester</h1>
+        <p class="muted">
+          Reproduces what the browser extension would call. Useful for demoing
+          fake URLs that may not resolve online.
+        </p>
+        <div class="card tester">
+          <label>
+            <span>Boundary</span>
+            <select id="testerBoundary"></select>
+          </label>
+          <label>
+            <span>URL</span>
+            <input id="testerUrl" type="text" placeholder="https://www.hopkinsmedicine.org/" />
+          </label>
+          <button id="testerRun" class="primary">Run verification</button>
+          <div id="testerResult" class="tester-result"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toastHost" class="toast-host"></div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

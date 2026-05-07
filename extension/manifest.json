@@ -1,35 +1,35 @@
 {
   "manifest_version": 3,
-  "name": "APTrust Boundary Checker (POC)",
-  "version": "0.1.0",
-  "description": "Proof-of-concept trust-boundary verification. Warns (does not block) when URLs fall outside the selected boundary.",
+  "name": "AP Trust Local Verification (POC)",
+  "version": "2.0.1",
+  "description": "Local trust-boundary verification for the AP Trust POC. Talks only to http://localhost:3000.",
   "action": {
-    "default_title": "APTrust",
+    "default_title": "AP Trust",
     "default_popup": "popup.html"
   },
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting",
+    "webNavigation",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "http://127.0.0.1:3000/*",
+    "http://*/*",
+    "https://*/*"
+  ],
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ],
-  "permissions": [
-    "storage",
-    "tabs",
-    "scripting",
-    "activeTab",
-    "webNavigation",
-    "webRequest"
-  ],
-  "host_permissions": [
-    "http://localhost:8787/*",
-    "http://127.0.0.1:8787/*",
-    "http://*/*",
-    "https://*/*"
   ]
 }

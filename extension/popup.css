@@ -7,6 +7,7 @@
   --ok: #2e7d32;
   --warn: #c62828;
   --excl: #ad1457;
+  --info: #1976d2;
   --border: #2a2f3a;
 }
 
@@ -15,7 +16,7 @@
 body {
   margin: 0;
   width: 360px;
-  font: 13px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
   background: var(--bg);
   color: var(--fg);
 }
@@ -28,13 +29,11 @@ header {
   border-bottom: 1px solid var(--border);
   background: var(--bg-2);
 }
-
 .title {
   font-weight: 600;
   letter-spacing: 0.2px;
   font-size: 14px;
 }
-
 .tag {
   display: inline-block;
   margin-left: 6px;
@@ -89,10 +88,14 @@ header {
 .panel-body { font-size: 13px; }
 .muted { color: var(--fg-muted); }
 .small { font-size: 12px; }
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  word-break: break-all;
+}
 .hidden { display: none !important; }
 
-input[type="search"] {
+input[type="search"],
+input[type="text"] {
   width: 100%;
   padding: 8px 10px;
   background: #0b0d12;
@@ -100,8 +103,10 @@ input[type="search"] {
   border: 1px solid var(--border);
   border-radius: 6px;
   outline: none;
+  font: inherit;
 }
-input[type="search"]:focus { border-color: var(--accent); }
+input[type="search"]:focus,
+input[type="text"]:focus { border-color: var(--accent); }
 
 .results {
   list-style: none;
@@ -120,20 +125,88 @@ input[type="search"]:focus { border-color: var(--accent); }
 }
 .results li:hover { border-color: var(--accent); }
 .results .name { font-weight: 600; }
-.results .domain { color: var(--fg-muted); font-size: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.results .domain {
+  color: var(--fg-muted);
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.results li.suspect {
+  border-color: var(--warn);
+  background: rgba(198, 40, 40, 0.08);
+}
+.results li.suspect:hover { border-color: #ff7b7b; }
+.results li.suspect .name { color: #ffb4b4; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.chip.warn {
+  background: rgba(198, 40, 40, 0.18);
+  color: #ffb4b4;
+  border-color: rgba(198, 40, 40, 0.55);
+}
+.chip.test {
+  background: rgba(173, 20, 87, 0.16);
+  color: #f8bbd0;
+  border-color: rgba(173, 20, 87, 0.55);
+}
+
+.suspect-note {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  background: rgba(198, 40, 40, 0.10);
+  border: 1px solid rgba(198, 40, 40, 0.55);
+  color: #ffb4b4;
+}
 
 .verdict {
   margin-top: 6px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-radius: 6px;
   font-size: 12px;
   background: #0b0d12;
   border: 1px solid var(--border);
+  line-height: 1.4;
 }
-.verdict.ok       { border-color: var(--ok);   color: #a5d6a7; }
-.verdict.warn     { border-color: var(--warn); color: #ffb4b4; }
-.verdict.excl     { border-color: var(--excl); color: #f8bbd0; }
+.verdict-headline {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.verdict-detail { color: var(--fg-muted); }
+.verdict-reasons {
+  margin: 6px 0 0 0;
+  padding-left: 16px;
+  color: var(--fg-muted);
+  font-size: 11px;
+}
+.verdict-reasons li { margin-bottom: 2px; }
+
+.verdict.ok       { border-color: var(--ok);     color: #a5d6a7; }
+.verdict.warn     { border-color: var(--warn);   color: #ffb4b4; }
+.verdict.excl     { border-color: var(--excl);   color: #f8bbd0; }
+.verdict.mail     { border-color: var(--info);   color: #90caf9; }
 .verdict.skipped  { border-color: var(--border); color: var(--fg-muted); }
+
+.hint { font-size: 11px; color: var(--fg-muted); margin-top: 6px; min-height: 1em; }
 
 button {
   background: var(--accent);
@@ -150,7 +223,7 @@ button.ghost {
   border: 1px solid var(--border);
   margin-top: 8px;
 }
-button.ghost:hover { color: var(--fg); }
+button.ghost:hover { color: var(--fg); border-color: var(--accent); }
 
 footer {
   display: flex;
@@ -163,4 +236,6 @@ footer {
 .status { min-height: 1em; }
 .status.err { color: #ffb4b4; }
 .status.ok  { color: #a5d6a7; }
-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

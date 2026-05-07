@@ -1,8 +1,8 @@
 {
-  "name": "apt11",
+  "name": "aptrust-poc",
   "private": true,
-  "version": "1.1.0",
-  "description": "APTrust / APT 1.1 — trust-boundary verification POC (Chrome extension + local index server).",
+  "version": "2.0.0",
+  "description": "AP Trust Local Verification POC \u2014 trust-boundary verification (Chrome MV3 extension + local TypeScript server + admin UI).",
   "repository": {
     "type": "git",
     "url": "https://github.com/Anush-Prabhu/APT1.1.git"
@@ -12,6 +12,9 @@
   },
   "workspaces": ["server"],
   "scripts": {
-    "start": "node server/index.js"
+    "start": "npm --prefix server run start",
+    "dev": "npm --prefix server run dev",
+    "build": "npm --prefix server run build",
+    "test": "npm --prefix server test"
   }
 }

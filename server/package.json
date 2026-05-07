@@ -1,15 +1,28 @@
 {
-  "name": "aptrust-index-server",
-  "version": "0.1.0",
-  "description": "Local index server for the APTrust POC. Simulates DNS TXT-style lookup and serves manifests.",
-  "main": "index.js",
-  "type": "commonjs",
+  "name": "aptrust-local-server",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Local Express + TypeScript server for the AP Trust Local Verification POC.",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.10",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^1.6.0"
   }
 }

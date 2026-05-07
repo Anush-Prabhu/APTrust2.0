@@ -184,7 +184,7 @@
         <strong style="color:#ffb4b4">APTrust · Report</strong>
         <span style="flex:1"></span>
         <button type="button" data-aptrust-modal="close" aria-label="Close"
-          style="background:transparent;border:1px solid #2a2f3a;color:#9aa3b2;border-radius:4px;padding:2px 8px;cursor:pointer;font:inherit">×</button>
+          style="background:transparent;border:1px solid #2a2f3a;color:#9aa3b2;border-radius:4px;padding:2px 8px;cursor:pointer;font:inherit">├ù</button>
       </div>
       <div style="font-size:15px;font-weight:600;margin-bottom:6px">
         Report suspected impersonation of ${escapeHtml(displayName)}
@@ -279,6 +279,13 @@
 
   chrome.runtime.onMessage.addListener((msg) => {
     if (!msg || !msg.type) return;
+
+    if (msg.type === 'APTRUST_OPEN_REPORT') {
+      if (msg.boundary) lastBoundary = msg.boundary;
+      if (msg.result) lastPageResult = msg.result;
+      openReportModal();
+      return;
+    }
 
     if (msg.type === 'APTRUST_PAGE_EVAL') {
       const r = msg.result || {};

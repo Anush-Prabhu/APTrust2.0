@@ -1,0 +1,105 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aptrust": "https://aptrust.org/vocab#"
+  },
+  "@type": "MedicalOrganization",
+  "@id": "https://jhmi.edu/",
+
+  "name": "Johns Hopkins Medical Institutions",
+  "alternateName": ["JHMI", "Hopkins Medical Institutions"],
+  "description": "Federation of Johns Hopkins University divisions and Hopkins-affiliated hospitals comprising one of the world's leading academic medical centers.",
+  "url": "https://www.jhmi.edu/",
+  "logo": "https://www.hopkinsmedicine.org/sebin/r/i/jhm-logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "733 N Broadway",
+    "addressLocality": "Baltimore",
+    "addressRegion": "MD",
+    "postalCode": "21205",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://en.wikipedia.org/wiki/Johns_Hopkins_Medical_Institutions"
+  ],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "jhmi.edu" }
+  ],
+  "parentOrganization": {
+    "@type": "Organization",
+    "@id": "https://jhu.edu/",
+    "name": "Johns Hopkins University"
+  },
+
+  "softwareVersion": "1.0.0",
+  "dateModified": "2026-05-07T00:00:00Z",
+
+  "aptrust:aptrustVersion": "1.0",
+  "aptrust:lastUpdated": "2026-05-07T00:00:00Z",
+  "aptrust:manifestLocation": "http://localhost:3000/manifest/jhmi.edu",
+
+  "aptrust:trustBoundary": {
+    "primaryDomain": "jhmi.edu",
+    "additionalDomains": [],
+    "match": "exact-or-subdomain"
+  },
+
+  "aptrust:trustRule": [
+    { "type": "domain", "match": "exact-or-subdomain" },
+    { "type": "socialProfile", "match": "exact-url-or-subpath" }
+  ],
+
+  "aptrust:sameAsDomain": [
+    "https://jhmi.edu/",
+    "https://www.jhmi.edu/"
+  ],
+
+  "aptrust:sameAsSocialProfile": [
+    "https://x.com/HopkinsMedicine",
+    "https://www.instagram.com/hopkinsmedicine"
+  ],
+
+  "aptrust:sameAsAdditionalProfile": [
+    {
+      "url": "https://hopkinsmedicine.connectsuite.com/",
+      "provider": "ConnectSuite",
+      "note": "Patient/visitor scheduling integration."
+    }
+  ],
+
+  "aptrust:parentOrganization": {
+    "name": "Johns Hopkins University",
+    "canonicalDomain": "jhu.edu",
+    "url": "https://www.jhu.edu/"
+  },
+
+  "aptrust:relatedOrganization": [
+    {
+      "name": "Johns Hopkins University",
+      "canonicalDomain": "jhu.edu",
+      "url": "https://www.jhu.edu/",
+      "domains": [
+        "https://jhu.edu/",
+        "https://www.jhu.edu/",
+        "https://johnshopkins.edu/"
+      ],
+      "relationshipType": "parent-university"
+    },
+    {
+      "name": "Johns Hopkins Medicine",
+      "canonicalDomain": "hopkinsmedicine.org",
+      "url": "https://www.hopkinsmedicine.org/",
+      "domains": ["https://www.hopkinsmedicine.org/"],
+      "relationshipType": "operating-arm"
+    }
+  ],
+
+  "aptrust:exclusion": [],
+
+  "aptrust:reportContact": {
+    "team": "Johns Hopkins Medicine InfoSec",
+    "email": "infosec@jhmi.edu",
+    "url": "https://it.johnshopkins.edu/security/report/",
+    "note": "Mock contact for the POC."
+  }
+}

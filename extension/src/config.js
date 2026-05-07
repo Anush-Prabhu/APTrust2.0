@@ -1,71 +1,45 @@
 /**
- * Central config for the extension. Kept tiny on purpose.
+ * Central config for the extension (MV3, ES modules).
  *
- * NOTE: In MV3 with "type": "module", these exports can be imported from the
- * background service worker, the popup, and injected modules alike.
+ * v2.0 server on port 3000. All verification goes through POST /verify.
  */
 
 export const CONFIG = {
-  /** Local index server. Use `localhost` or `127.0.0.1` — both work if manifest host_permissions include both. */
-  indexServerBase: 'http://localhost:8787',
+  serverBase: 'http://localhost:3000',
 
-  // TODO (hash verification):
-  //   Flip this to `true` once entries.json has a real sha256-<hex> value and
-  //   the manifest is frozen. The SHA-256 pipeline already runs; it's just
-  //   not enforced. See background.js -> loadManifest().
-  enforceHashVerification: false,
+  storageKeys: {
+    protectMode: 'aptrust.protectMode',
+    selectedBoundary: 'aptrust.selectedBoundary',
+  },
 
-  // Hosts that are social platforms. For these hosts we refuse to trust the
-  // whole domain; only exact profile URLs declared in the manifest are trusted.
-  socialHosts: [
-    'x.com',
-    'twitter.com',
-    'facebook.com',
-    'm.facebook.com',
-    'linkedin.com',
-    'youtube.com',
-    'm.youtube.com',
-    'instagram.com',
-    'tiktok.com',
-    'threads.net',
-    'reddit.com'
-  ],
-
-  // Known webmail / email-client hosts. When the TAB itself is on one of these
-  // hosts, we do NOT flag the whole page as untrusted — the user is in a
-  // legitimate mail client, not on an impersonation target. We still evaluate
-  // every hyperlink inside the email against the selected trust boundary, so
-  // links pointing outside the boundary are still outlined and tooltip-tagged.
-  //
-  // Matching is host-based with subdomain support (isSubdomainOf).
+  /**
+   * When the tab URL is inside a recognized webmail host, downgrade a raw
+   * UNTRUSTED page verdict to MAIL_CLIENT so the inbox UI itself is not
+   * painted as an impersonation target (links in messages are still scanned).
+   */
   emailHosts: [
     'mail.google.com',
     'outlook.live.com',
     'outlook.office.com',
     'outlook.office365.com',
-    'outlook.cloud.microsoft', // JHU (and other tenants) use this host with ?realm=<tenant>
+    'outlook.cloud.microsoft',
     'mail.yahoo.com',
     'mail.proton.me',
     'mail.aol.com',
     'mail.zoho.com',
     'app.fastmail.com',
-    'icloud.com' // iCloud Mail is served under /mail on www.icloud.com
+    'icloud.com',
   ],
-
-  storageKeys: {
-    protectMode: 'aptrust.protectMode',
-    selectedEntry: 'aptrust.selectedEntry',
-    manifest: 'aptrust.manifest',
-    boundary: 'aptrust.boundary'
-  }
 };
 
+/** Legacy content-script + background contract from APT 1.0. */
 export const STATUS = {
   TRUSTED: 'trusted',
   UNTRUSTED: 'untrusted',
   EXCLUDED: 'excluded',
   SKIPPED: 'skipped',
-  // Page-level only: the TAB URL is on a known webmail host. Set by the
-  // background's evaluatePage(); never emitted by the pure evaluateUrl().
-  MAIL_CLIENT: 'mail_client'
+  MAIL_CLIENT: 'mail_client',
 };
+
+export const SERVER_UNAVAILABLE_MESSAGE =
+  'Local AP Trust server unavailable. Start the local server and try again.';

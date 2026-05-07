@@ -1,0 +1,76 @@
+[
+  {
+    "id": "rule-unidirectional-claim-detection",
+    "type": "UNIDIRECTIONAL_CLAIM_DETECTION",
+    "enabled": true,
+    "scope": "global",
+    "effect": "SUSPICIOUS_UNIDIRECTIONAL_CLAIM",
+    "priority": 100,
+    "requiresBidirectionalVerification": true,
+    "notes": "Detects when a boundary claims assets owned by another known AP Trust record without reciprocal confirmation."
+  },
+  {
+    "id": "rule-lookalike-detection",
+    "type": "LOOKALIKE_DETECTION",
+    "enabled": true,
+    "scope": "global",
+    "effect": "SUSPICIOUS_LOOKALIKE",
+    "priority": 90,
+    "requiresBidirectionalVerification": false,
+    "notes": "Detects typo, repeated character, punycode, and suspicious keyword lookalikes."
+  },
+  {
+    "id": "rule-domain-exact",
+    "type": "DOMAIN_EXACT",
+    "enabled": true,
+    "scope": "global",
+    "effect": "OFFICIAL",
+    "priority": 80,
+    "requiresBidirectionalVerification": false,
+    "notes": "Exact selected boundary match."
+  },
+  {
+    "id": "rule-official-domain",
+    "type": "OFFICIAL_DOMAIN",
+    "enabled": true,
+    "scope": "global",
+    "effect": "OFFICIAL",
+    "priority": 70,
+    "requiresBidirectionalVerification": false,
+    "notes": "Matches domains listed in officialDomains."
+  },
+  {
+    "id": "rule-related-organization",
+    "type": "RELATED_ORGANIZATION",
+    "enabled": true,
+    "scope": "global",
+    "effect": "RELATED",
+    "priority": 60,
+    "requiresBidirectionalVerification": true,
+    "notes": "Matches declared related organizations and checks reciprocal relationship where available."
+  },
+  {
+    "id": "rule-social-exact",
+    "type": "SOCIAL_PROFILE_EXACT",
+    "enabled": true,
+    "scope": "global",
+    "effect": "SOCIAL_VERIFIED",
+    "priority": 50,
+    "requiresBidirectionalVerification": false,
+    "notes": "Exact declared social profile match."
+  },
+  {
+    "id": "ns-jhu-local-test",
+    "type": "NAMESERVER_ALLOWLIST",
+    "enabled": false,
+    "scope": "jhu.edu",
+    "nameservers": [
+      "ns1.jhu.edu",
+      "ns2.jhu.edu"
+    ],
+    "effect": "RELATED_CANDIDATE",
+    "priority": 20,
+    "requiresBidirectionalVerification": true,
+    "notes": "Disabled by default. Simulated metadata only. No live NS lookup. Nameserver match does not make a domain official."
+  }
+]

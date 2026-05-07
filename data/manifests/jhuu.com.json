@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aptrust": "https://aptrust.org/vocab#"
+  },
+  "@type": "Organization",
+  "@id": "https://jhuu.com/",
+
+  "name": "Johns Hopkins University",
+  "alternateName": ["JHU"],
+  "description": "INTENTIONALLY SUSPICIOUS demo manifest. The org behind jhuu.com claims to be Johns Hopkins University but jhu.edu does not reciprocate the relationship \u2014 the engine should flag this as SUSPICIOUS_UNIDIRECTIONAL_CLAIM.",
+  "url": "https://jhuu.com/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Unknown",
+    "addressCountry": "US"
+  },
+  "sameAs": [],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "jhuu.com" }
+  ],
+
+  "softwareVersion": "0.0.1",
+  "dateModified": "2026-05-07T00:00:00Z",
+
+  "aptrust:aptrustVersion": "1.0",
+  "aptrust:lastUpdated": "2026-05-07T00:00:00Z",
+  "aptrust:manifestLocation": "http://localhost:3000/manifest/jhuu.com",
+
+  "aptrust:trustBoundary": {
+    "primaryDomain": "jhuu.com",
+    "additionalDomains": [],
+    "match": "exact-or-subdomain"
+  },
+
+  "aptrust:trustRule": [
+    { "type": "domain", "match": "exact-or-subdomain" }
+  ],
+
+  "aptrust:sameAsDomain": [
+    "https://jhuu.com/",
+    "https://www.jhuu.com/"
+  ],
+
+  "aptrust:sameAsSocialProfile": [
+    "https://x.com/JohnsHopkins",
+    "https://www.instagram.com/johnshopkinsu"
+  ],
+
+  "aptrust:sameAsAdditionalProfile": [],
+
+  "aptrust:claimedExternalDomain": [
+    "https://jhu.edu/",
+    "https://jh.edu/",
+    "https://johnshopkins.edu/",
+    "https://www.hopkinsmedicine.org/",
+    "https://www.jhmi.edu/"
+  ],
+
+  "aptrust:relatedOrganization": [
+    {
+      "name": "Johns Hopkins University",
+      "canonicalDomain": "jhu.edu",
+      "url": "https://jhu.edu/",
+      "domains": [
+        "https://jhu.edu/",
+        "https://jh.edu/",
+        "https://johnshopkins.edu/"
+      ],
+      "relationshipType": "claimed-affiliation"
+    },
+    {
+      "name": "Johns Hopkins Medicine",
+      "canonicalDomain": "hopkinsmedicine.org",
+      "url": "https://www.hopkinsmedicine.org/",
+      "domains": ["https://www.hopkinsmedicine.org/"],
+      "relationshipType": "claimed-affiliation"
+    }
+  ],
+
+  "aptrust:exclusion": [],
+
+  "aptrust:reportContact": {
+    "team": "(none \u2014 unverified org)",
+    "email": "",
+    "url": "",
+    "note": "This manifest is intentionally suspicious. Reports about pages on jhuu.com should go to the impersonated org's contact (jhu.edu)."
+  }
+}

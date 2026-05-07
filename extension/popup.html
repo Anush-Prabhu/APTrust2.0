@@ -15,7 +15,7 @@
       </label>
     </header>
 
-    <section id="selectedPanel" class="panel">
+    <section class="panel">
       <div class="panel-title">Selected boundary</div>
       <div id="selectedBody" class="panel-body muted">None selected.</div>
       <button id="clearBtn" class="ghost hidden">Clear</button>
@@ -26,7 +26,7 @@
       <input
         type="search"
         id="searchInput"
-        placeholder="Try: jhu, johnshopkins, jhu.edu"
+        placeholder="Try: jhu, jh.edu, jhmi.edu, hopkinsmedicine, jhuu"
         autocomplete="off"
       />
       <ul id="searchResults" class="results"></ul>
@@ -34,13 +34,27 @@
 
     <section class="panel">
       <div class="panel-title">Current tab</div>
-      <div id="tabUrl" class="mono small muted">—</div>
-      <div id="tabVerdict" class="verdict">—</div>
+      <div id="tabUrl" class="mono small muted">&mdash;</div>
+      <div id="tabVerdict" class="verdict skipped">&mdash;</div>
+      <button id="reportBtn" class="ghost hidden">Report this page</button>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">Verify a URL, email, or social handle</div>
+      <input
+        type="text"
+        id="verifyInput"
+        placeholder="https://example.com   or   user@jhu.edu   or   @johnshopkinsu"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <div id="verifyHint" class="hint small muted"></div>
+      <div id="verifyVerdict" class="verdict skipped hidden">&mdash;</div>
     </section>
 
     <footer>
       <div id="status" class="status"></div>
-      <div class="hint">Server: <code>http://localhost:8787</code></div>
+      <div class="hint">Server: <code id="serverUrl">http://localhost:3000</code></div>
     </footer>
 
     <script type="module" src="popup.js"></script>

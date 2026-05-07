@@ -169,7 +169,7 @@ The browser user can:
 - Select a trust boundary
 - Verify the current tab URL
 - Manually verify a URL
-- View trust status, rating, relationship, and reasons
+- View trust status, status code, relationship, and reasons
 
 #### 2.4.2 Local Admin / Demo Operator
 
@@ -303,7 +303,7 @@ The browser extension shall:
 - Store selected trust boundary locally
 - Verify current tab URL
 - Verify manually entered URL
-- Display status, rating, relationship, and reasons
+- Display status, status code, relationship, and reasons
 - Show local server unavailable state if `localhost:3000` is unreachable
 
 #### 3.2.3 Local Data Store
@@ -741,11 +741,11 @@ This requirement is mandatory for the `jhuu.edu` test case.
 
 ---
 
-### 5.4 Rating Model
+### 5.4 Status Code Model
 
-The system shall return a simple numeric rating from 0 to 100.
+The system shall return a simple numeric status code from 0 to 100.
 
-| Condition | Suggested Rating |
+| Condition | Suggested status code |
 |---|---:|
 | Exact selected boundary match | 95 |
 | Official domain declared | 90 |
@@ -758,7 +758,7 @@ The system shall return a simple numeric rating from 0 to 100.
 | Suspicious unidirectional claim | 10 |
 | Invalid input or disabled boundary | 0 |
 
-The rating is for demo clarity. It does not need to be a mathematically perfect risk score.
+The status code is for demo clarity. It does not need to be a mathematically perfect risk score.
 
 ---
 
@@ -892,7 +892,7 @@ The server shall verify a URL against a selected boundary.
   "url": "https://www.hopkinsmedicine.org/",
   "normalizedDomain": "hopkinsmedicine.org",
   "status": "RELATED",
-  "rating": 85,
+  "statusCode": 85,
   "relationship": "BIDIRECTIONAL_VERIFIED",
   "reasons": [
     "Target domain is declared as related by jhu.edu.",
@@ -1265,7 +1265,7 @@ The extension shall verify the active tab URL.
 **Acceptance Criteria:**
 
 - Current URL appears in popup.
-- Status, rating, relationship, and reasons appear clearly.
+- Status, status code, relationship, and reasons appear clearly.
 - Works with `jhu.edu`, `hopkinsmedicine.org`, and other demo URLs.
 
 ---
@@ -1476,7 +1476,7 @@ The admin UI shall include a verification tester.
 - Admin selects boundary.
 - Admin enters URL.
 - UI calls `POST /verify`.
-- Result displays status, rating, relationship, and reasons.
+- Result displays status, status code, relationship, and reasons.
 
 **Acceptance Criteria:**
 
@@ -1556,7 +1556,7 @@ Response:
   "url": "https://www.hopkinsmedicine.org/",
   "normalizedDomain": "hopkinsmedicine.org",
   "status": "RELATED",
-  "rating": 85,
+  "statusCode": 85,
   "relationship": "BIDIRECTIONAL_VERIFIED",
   "reasons": [
     "Target domain is declared as a related organization by jhu.edu.",
@@ -2344,7 +2344,7 @@ Features:
 - Boundary selection
 - Current tab verification
 - Manual URL verification
-- Display selected boundary, checked URL, status, rating, relationship, and reasons
+- Display selected boundary, checked URL, status, status code, relationship, and reasons
 - Show "Local AP Trust server unavailable" when localhost:3000 is unavailable
 
 Do not scan browsing history.

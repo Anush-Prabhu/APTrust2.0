@@ -1,0 +1,131 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aptrust": "https://aptrust.org/vocab#"
+  },
+  "@type": "MedicalOrganization",
+  "@id": "https://hopkinsmedicine.org/",
+
+  "name": "Johns Hopkins Medicine",
+  "alternateName": ["JHM", "Hopkins Medicine"],
+  "description": "Integrated global health enterprise and the operating arm of Johns Hopkins Medical Institutions, including the School of Medicine and the Johns Hopkins Health System.",
+  "url": "https://www.hopkinsmedicine.org/",
+  "logo": "https://www.hopkinsmedicine.org/sebin/r/i/jhm-logo.svg",
+  "foundingDate": "1997-01-01",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1800 Orleans Street",
+    "addressLocality": "Baltimore",
+    "addressRegion": "MD",
+    "postalCode": "21287",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-410-955-5000",
+  "sameAs": [
+    "https://en.wikipedia.org/wiki/Johns_Hopkins_Medicine",
+    "https://ror.org/02ev87a26"
+  ],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "hopkinsmedicine.org" },
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "jhmi.edu" },
+    { "@type": "PropertyValue", "propertyID": "ROR", "value": "02ev87a26" }
+  ],
+  "parentOrganization": {
+    "@type": "Organization",
+    "@id": "https://jhu.edu/",
+    "name": "Johns Hopkins University"
+  },
+
+  "softwareVersion": "1.0.0",
+  "dateModified": "2026-05-07T00:00:00Z",
+
+  "aptrust:aptrustVersion": "1.0",
+  "aptrust:lastUpdated": "2026-05-07T00:00:00Z",
+  "aptrust:manifestLocation": "http://localhost:3000/manifest/hopkinsmedicine.org",
+
+  "aptrust:trustBoundary": {
+    "primaryDomain": "hopkinsmedicine.org",
+    "additionalDomains": ["jhmi.edu"],
+    "match": "exact-or-subdomain"
+  },
+
+  "aptrust:trustRule": [
+    { "type": "domain", "match": "exact-or-subdomain" },
+    { "type": "socialProfile", "match": "exact-url-or-subpath" },
+    { "type": "additionalProfile", "match": "exact-url" },
+    { "type": "officialMail", "match": "host+realm" }
+  ],
+
+  "aptrust:sameAsDomain": [
+    "https://hopkinsmedicine.org/",
+    "https://www.hopkinsmedicine.org/",
+    "https://www.jhmi.edu/",
+    "https://jhmi.edu/"
+  ],
+
+  "aptrust:sameAsSocialProfile": [
+    "https://www.instagram.com/hopkinsmedicine",
+    "https://x.com/HopkinsMedicine",
+    "https://www.facebook.com/JohnsHopkinsMedicine",
+    "https://www.youtube.com/JohnsHopkinsMedicine",
+    "https://www.linkedin.com/company/johns-hopkins-medicine"
+  ],
+
+  "aptrust:sameAsAdditionalProfile": [
+    {
+      "url": "https://mychart.hopkinsmedicine.org/",
+      "provider": "Epic MyChart",
+      "note": "Official patient portal (vendor-hosted Epic instance)."
+    },
+    {
+      "url": "https://hopkinsmedicine.csod.com/",
+      "provider": "Cornerstone OnDemand",
+      "note": "Official staff learning-management portal."
+    }
+  ],
+
+  "aptrust:parentOrganization": {
+    "name": "Johns Hopkins University",
+    "canonicalDomain": "jhu.edu",
+    "url": "https://jhu.edu/"
+  },
+
+  "aptrust:relatedOrganization": [
+    {
+      "name": "Johns Hopkins Medical Institutions",
+      "canonicalDomain": "jhmi.edu",
+      "url": "https://www.jhmi.edu/",
+      "domains": ["https://jhmi.edu/", "https://www.jhmi.edu/"],
+      "relationshipType": "shared-medical-institution"
+    },
+    {
+      "name": "Johns Hopkins (alternate brand)",
+      "canonicalDomain": "jh.edu",
+      "url": "https://www.jh.edu/",
+      "domains": ["https://jh.edu/", "https://www.jh.edu/"],
+      "relationshipType": "sister-brand"
+    }
+  ],
+
+  "aptrust:exclusion": [
+    {
+      "domain": "appointments.hopkinsmedicine-promo.example",
+      "reason": "Known phishing variant impersonating MyChart appointment booking."
+    }
+  ],
+
+  "aptrust:officialMail": {
+    "provider": "Microsoft Outlook (shared tenant)",
+    "webUrl": "https://outlook.cloud.microsoft/mail/?realm=jh.edu",
+    "host": "outlook.cloud.microsoft",
+    "realmHint": "realm=jh.edu",
+    "note": "Hopkins Medicine shares the JHU Outlook tenant."
+  },
+
+  "aptrust:reportContact": {
+    "team": "Johns Hopkins Medicine InfoSec",
+    "email": "infosec@jhmi.edu",
+    "url": "https://it.johnshopkins.edu/security/report/",
+    "note": "Mock contact for the POC."
+  }
+}

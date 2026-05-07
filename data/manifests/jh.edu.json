@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aptrust": "https://aptrust.org/vocab#"
+  },
+  "@type": "Organization",
+  "@id": "https://jh.edu/",
+
+  "name": "Johns Hopkins (alternate brand)",
+  "alternateName": ["JH", "Johns Hopkins (jh.edu)"],
+  "description": "Short-form brand domain for Johns Hopkins, often used in webmail and shared-tenant contexts.",
+  "url": "https://www.jh.edu/",
+  "logo": "https://brand.jhu.edu/assets/logos/Logo-Stack.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Baltimore",
+    "addressRegion": "MD",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://en.wikipedia.org/wiki/Johns_Hopkins_University"
+  ],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "aptrust:domain", "value": "jh.edu" }
+  ],
+  "parentOrganization": {
+    "@type": "Organization",
+    "@id": "https://jhu.edu/",
+    "name": "Johns Hopkins University"
+  },
+
+  "softwareVersion": "1.0.0",
+  "dateModified": "2026-05-07T00:00:00Z",
+
+  "aptrust:aptrustVersion": "1.0",
+  "aptrust:lastUpdated": "2026-05-07T00:00:00Z",
+  "aptrust:manifestLocation": "http://localhost:3000/manifest/jh.edu",
+
+  "aptrust:trustBoundary": {
+    "primaryDomain": "jh.edu",
+    "additionalDomains": [],
+    "match": "exact-or-subdomain"
+  },
+
+  "aptrust:trustRule": [
+    { "type": "domain", "match": "exact-or-subdomain" },
+    { "type": "socialProfile", "match": "exact-url-or-subpath" }
+  ],
+
+  "aptrust:sameAsDomain": [
+    "https://jh.edu/",
+    "https://www.jh.edu/"
+  ],
+
+  "aptrust:sameAsSocialProfile": [
+    "https://x.com/JohnsHopkins",
+    "https://www.instagram.com/johnshopkinsu"
+  ],
+
+  "aptrust:sameAsAdditionalProfile": [
+    {
+      "url": "https://giving.jh.edu/",
+      "provider": "Johns Hopkins Office of Development",
+      "note": "Official giving / alumni donations site (operates under jh.edu)."
+    }
+  ],
+
+  "aptrust:parentOrganization": {
+    "name": "Johns Hopkins University",
+    "canonicalDomain": "jhu.edu",
+    "url": "https://www.jhu.edu/"
+  },
+
+  "aptrust:relatedOrganization": [
+    {
+      "name": "Johns Hopkins University",
+      "canonicalDomain": "jhu.edu",
+      "url": "https://www.jhu.edu/",
+      "domains": [
+        "https://jhu.edu/",
+        "https://www.jhu.edu/",
+        "https://johnshopkins.edu/"
+      ],
+      "relationshipType": "primary-brand"
+    },
+    {
+      "name": "Johns Hopkins Medicine",
+      "canonicalDomain": "hopkinsmedicine.org",
+      "url": "https://www.hopkinsmedicine.org/",
+      "domains": ["https://www.hopkinsmedicine.org/"],
+      "relationshipType": "sister-org"
+    }
+  ],
+
+  "aptrust:exclusion": [],
+
+  "aptrust:reportContact": {
+    "team": "JHU Information Security Institute",
+    "email": "abuse@jhu.edu",
+    "url": "https://it.johnshopkins.edu/security/report/",
+    "note": "JHU-wide security desk handles reports for the jh.edu brand."
+  }
+}
